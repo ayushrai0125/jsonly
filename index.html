@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<script>
+    document.write('<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Text Typing Animation</title></head><body><p class="p"></p></body>')
+    let typingSpeed = 100; //time should be in mini seconds
+    let text = "Text Typing Animation with only javascript";// you can put any string
+    //below part should not be changed
+    let textLength = text.length;
+    let body = document.body;
+    let animationTime = typingSpeed * textLength;
+    //above part should not be changed
+
+    
+    let p = document.querySelector(".p");// grabbing the place where the typing animation is displayed
+    //below part is just some stylings
+    body.style.backgroundColor = "#222";
+    p.style.cssText = "color:white; font-size:24px;text-shadow:2px 2px 10px #fff";
+    //above part is just some stylings 
+    
+    //Main function for running it at least 1 time
+    //orginal one
+    function animation(){
+            for (let i=0; i<textLength; i++) {
+            setTimeout(function() {
+            p.innerHTML += text.charAt(i);
+            }, typingSpeed * i);
+            remove();//delete this line if you want to do the animation just once
+        }
+        }
+        body.onload = animation();
+
+        // if you want to just do the animation once then you won't need the below part
+        function remove(){
+            setTimeout(function(){
+                p.innerHTML="";
+            },animationTime+100)//animationTime + removing time
+        }
+
+        function repeat(){
+            setTimeout(function(){
+                for (let i=0; i<textLength; i++) {
+                setTimeout(function() {
+                p.innerHTML += text.charAt(i);
+                }, typingSpeed * i);
+                remove();
+            }
+            },1000)
+        }
+        //to repeat the animation for as many times as you want, you will need to change the delay time otherwise the other animation will intefere with each other. 
+        // the formula i came up with is animationTime * the number of times the animation repeates after the orginal one + removing time multiplied by the number of animation repeates. 
+        setTimeout(function(){
+            repeat();
+        },animationTime*1+100);
+  
+         setTimeout(function(){
+            repeat();
+        },animationTime*2+400);
+  
+        setTimeout(function(){
+            repeat();
+        },animationTime*3+1000);
+  
+        setTimeout(function(){
+            setTimeout(function(){
+                for (let i=0; i<textLength; i++) {
+                setTimeout(function() {
+                p.innerHTML += text.charAt(i);
+                }, typingSpeed * i);
+            }
+            },1000)
+        },animationTime*4+1600);
+</script>
+</html>

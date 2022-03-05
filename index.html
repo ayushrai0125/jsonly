@@ -46,28 +46,5 @@
             }
             },1000)
         }
-        //to repeat the animation for as many times as you want, you will need to change the delay time otherwise the other animation will intefere with each other. 
-        // the formula i came up with is animationTime * the number of times the animation repeates after the orginal one + removing time multiplied by the number of animation repeates. 
-        setTimeout(function(){
-            repeat();
-        },animationTime*1+100);
-  
-         setTimeout(function(){
-            repeat();
-        },animationTime*2+400);
-  
-        setTimeout(function(){
-            repeat();
-        },animationTime*3+1000);
-  
-        setTimeout(function(){
-            setTimeout(function(){
-                for (let i=0; i<textLength; i++) {
-                setTimeout(function() {
-                p.innerHTML += text.charAt(i);
-                }, typingSpeed * i);
-            }
-            },1000)
-        },animationTime*4+1600);
 </script>
 </html>

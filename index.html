@@ -1,50 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
 <script>
-    document.write('<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Text Typing Animation</title></head><body><p class="p"></p></body>')
-    let typingSpeed = 100; //time should be in mini seconds
-    let text = "Text Typing Animation with only javascript";// you can put any string
-    //below part should not be changed
+    document.write('<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Text Typing Animation</title></head><body><p class="p"></p></body></html>')
+    let n = prompt("how many times do you want the animation.");
+    let typingSpeed = 200;
+    let text = "Text Typing Animation with only javascript.";
+
     let textLength = text.length;
     let body = document.body;
-    let animationTime = typingSpeed * textLength;
-    //above part should not be changed
-
+    let animationTime = textLength * typingSpeed;
     
-    let p = document.querySelector(".p");// grabbing the place where the typing animation is displayed
-    //below part is just some stylings
+    let p = document.querySelector(".p");
+    
     body.style.backgroundColor = "#222";
     p.style.cssText = "color:white; font-size:24px;text-shadow:2px 2px 10px #fff";
-    //above part is just some stylings 
-    
-    //Main function for running it at least 1 time
-    //orginal one
-    function animation(){
-            for (let i=0; i<textLength; i++) {
-            setTimeout(function() {
-            p.innerHTML += text.charAt(i);
-            }, typingSpeed * i);
-            remove();//delete this line if you want to do the animation just once
-        }
-        }
-        body.onload = animation();
 
-        // if you want to just do the animation once then you won't need the below part
-        function remove(){
-            setTimeout(function(){
-                p.innerHTML="";
-            },animationTime+100)//animationTime + removing time
-        }
-
-        function repeat(){
-            setTimeout(function(){
-                for (let i=0; i<textLength; i++) {
-                setTimeout(function() {
+    function animation() {
+        for (let i = 0; i < textLength; i++) {
+            setTimeout(function () {
                 p.innerHTML += text.charAt(i);
-                }, typingSpeed * i);
-                remove();
-            }
-            },1000)
+            }, typingSpeed * i);
         }
+    }
+    
+    function remove(){
+        p.innerHTML = "";
+    }
+
+    function animate(){
+        let i = 0;
+        for(let time = 1000;i<n;i++){
+            setTimeout(function(){
+                animation();
+                remove();
+            },(animationTime * i) + time);
+        }
+    }
+
+    animate();
 </script>
-</html>

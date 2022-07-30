@@ -1,4 +1,3 @@
-<script>
     document.write('<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Text Typing Animation</title></head><body><p class="p"></p></body></html>')
     let n = prompt("how many times do you want the animation.");
     let typingSpeed = 200;
@@ -36,4 +35,3 @@
     }
 
     animate();
-</script>
